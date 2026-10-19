@@ -1,0 +1,11 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>PLAY-DAT SAVER</title><style>body{background:#111;color:#fff;font-family:Arial;text-align:center;margin:0}.box{background:#222;border:2px solid #FFD700;margin:12px;border-radius:14px;padding:16px}input{width:92%;padding:14px;margin:7px;border-radius:10px;border:1px solid #FFD700;background:#111;color:#fff}button{background:#FFD700;color:#111;padding:15px;width:92%;border:0;font-weight:900;border-radius:20px;margin:7px}button.blue{background:#2196F3;color:#fff}</style></head><body>
+<h1 style="color:#FFD700">PLAY-DAT </h1><p>ARTIST REGISTER - SYSTEM PAYS YOU 80%</p>
+<div class="box"><input id="an" placeholder="Artist Name"><input id="sn" placeholder="Song Name"><input id="am" placeholder="Artist MoMo Number - SYSTEM pays 80% here"><input id="url" placeholder="Song Link"><button onclick="save()">💾 REGISTER TO PLAY-DAT</button><p> SYSTEM 0539425180<br>SYSTEM pays <br>SYSTEM keeps 20% PLAY-DAT</p></div>
+<div class="box"><div id="list"></div></div>
+<div class="box"><button class="blue" onclick="window.location='playdat.html'">🌍 GO TO PLAY-DAT</button></div>
+<script>
+let songs=JSON.parse(localStorage.getItem('playdat_songs')||'[]');
+function show(){let l=document.getElementById('list');l.innerHTML=songs.length?songs.map((s,i)=>`<p>${i+1}. ${s.song} - ${s.artist}<br>SYSTEM pays 80% to: ${s.momo}</p>`).join(''):'No songs yet'}
+show();
+function save(){let a=document.getElementById('an').value;let s=document.getElementById('sn').value;let m=document.getElementById('am').value;let u=document.getElementById('url').value;if(!a||!s||!m){alert('Type Name, Song, MoMo');return}songs.push({artist:a,song:s,momo:m,url:u});localStorage.setItem('playdat_songs',JSON.stringify(songs));alert('✅ REGISTERED!\n\nArtist: '+a+'\nSong: '+s+'\nSYSTEM pays 80% to: '+m);show();}
+</script></body></html>
